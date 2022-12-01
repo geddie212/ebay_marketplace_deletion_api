@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 import hashlib
 import os
 
@@ -17,9 +17,10 @@ def index():
     try:
         resp_hash = hashlib.sha256(args_dict['challenge_code'].encode() + verification_token.encode() + endpoint.encode())
         resp = {'challengeResponse': resp_hash.hexdigest()}
-        return jsonify(resp), 200
+        return Response(resp, status=200, mimetype='application/json')
     except KeyError:
-        return '<p>Wrong Parameters</p>', 404
+        err = {'status_code': 400, 'message': 'no challenge response in params'}
+        return Response(err, status=400, mimetype='application/json')
 
 
 if __name__ == '__main__':
