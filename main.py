@@ -25,7 +25,7 @@ def index():
         return jsonify(err), 400, {'content-type': 'application/json'}
 
 @app.route('/delete-notification')
-def index():
+def delete():
     args = request.args
     args_dict = args.to_dict()
     try:
