@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 
 verification_token = 'r8943d2h7f65g7426-2j437589f27-0895f728-674g3298f675'
-endpoint = 'https://ebay-deletion.herokuapp.com'
+endpoint = 'https://ebay-deletion.herokuapp.com/delete-notification'
 
 # verification_token = os.environ.get('verification_token')
 # endpoint = os.environ.get('endpoint')
