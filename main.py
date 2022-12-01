@@ -14,6 +14,7 @@ endpoint = os.environ.get('endpoint')
 def index():
     args = request.args
     args_dict = args.to_dict()
+
     try:
         resp_hash = hashlib.sha256(args_dict['challenge_code'].encode() + verification_token.encode() + endpoint.encode())
         resp = {'challengeResponse': resp_hash.hexdigest()}
